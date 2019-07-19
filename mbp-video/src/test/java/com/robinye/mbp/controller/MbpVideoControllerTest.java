@@ -9,17 +9,15 @@ package com.robinye.mbp.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.robinye.mbp.MbpVideoApplication;
 import com.robinye.mbp.exceptions.VideoErrorCode;
 import com.robinye.mbp.vo.MbpVideoVO;
 import lombok.extern.slf4j.Slf4j;
+import com.robinye.mbp.MbpVideoApplication;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -40,11 +38,10 @@ import java.util.List;
  * @version 1.0.0
  * @since jdk8
  */
-//@Slf4j
+@Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = MbpVideoApplication.class)
 public class MbpVideoControllerTest {
-    private static final Logger log = LoggerFactory.getLogger(MbpVideoControllerTest.class);
     private MockMvc mockMvc;
 
     @Autowired
@@ -59,7 +56,7 @@ public class MbpVideoControllerTest {
     }
 
     /**
-     * @see com.robinye.mbp.controller.MbpVideoController#getVideo(Long)
+     * @see MbpVideoController#getVideo(Long)
      * @throws Exception
      */
     @Test
@@ -89,7 +86,7 @@ public class MbpVideoControllerTest {
     }
 
     /**
-     * @see com.robinye.mbp.controller.MbpVideoController#listVideos(String)
+     * @see MbpVideoController#listVideos(String)
      * @throws Exception
      */
     @Test
@@ -115,7 +112,7 @@ public class MbpVideoControllerTest {
     }
 
     /**
-     * @see com.robinye.mbp.controller.MbpVideoController#listVideos(String)
+     * @see MbpVideoController#listVideos(String)
      * @throws Exception 错误处理
      */
     @Test

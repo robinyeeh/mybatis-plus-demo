@@ -1,7 +1,7 @@
 package com.robinye.mbp.service;
 
-import com.robinye.mbp.entity.MbpVideo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.robinye.mbp.entity.MbpVideo;
 import com.robinye.mbp.vo.MbpVideoVO;
 
 import java.util.List;

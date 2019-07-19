@@ -1,12 +1,12 @@
 package com.robinye.mbp.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.robinye.mbp.convertor.MbpVideoConvertor;
 import com.robinye.mbp.entity.MbpVideo;
 import com.robinye.mbp.exceptions.VideoErrorCode;
 import com.robinye.mbp.exceptions.VideoRuntimeException;
 import com.robinye.mbp.mapper.MbpVideoMapper;
 import com.robinye.mbp.service.IMbpVideoService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.robinye.mbp.vo.MbpVideoVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

@@ -57,11 +57,11 @@
                 <scope>import</scope>
             </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.robinye.mbp</groupId>-->
-<!--                <artifactId>mbp-base</artifactId>-->
-<!--                <version>${mbp-base.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.robinye.mbp</groupId>
+                <artifactId>mbp-base</artifactId>
+                <version>${mbp-base.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>mysql</groupId>

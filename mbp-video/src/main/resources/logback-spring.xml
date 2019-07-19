@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="false">
+<!--    <springProperty scop="context" name="app_name" source="spring.application.name" defaultValue="manage"/>-->
+    <springProperty scop="context" name="log_level" source="oes.log.level" defaultValue="INFO"/>
+    <springProperty scop="context" name="log_open_console" source="oes.log.open_console" defaultValue="false"/>
+
+    <property name="app_name" value="${app.name:-video}"/>
+    <property name="log_path" value="${log.home:-/opt/oes/oes-content}"/>
+
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS}|%level|${PID:-}|%thread|${app_name:-}|%X{X-B3-TraceId:-}|%X{X-B3-SpanId:-}|%X{X-Span-Export:-}|%class.%method-%line|%msg%n"/>
+    <!-- Console log output -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- Log file debug output -->
+    <appender name="logFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log_path}/${app_name}/%d{yyyy-MM-dd}.info.log</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- Log file error output -->
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log_path}/${app_name}/%d{yyyy-MM-dd}.error.log</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <logger name="org.apache"/>
+    <logger name="org.springframework"/>
+    <logger name="com.netflix"/>
+    <logger name="io.github.openfeign"/>
+    <logger name="com.squareup.okhttp3"/>
+    <logger name="com.wondertek"/>
+    <logger name="com.wondertek.oes"/>
+
+    <!-- Level: FATAL 0  ERROR 3  WARN 4  INFO 6  DEBUG 7 -->
+    <root level="${log_level}">
+        <if condition='property("log_open_console").contains("true")'>
+            <then>
+                <appender-ref ref="console"/>
+            </then>
+        </if>
+        <appender-ref ref="logFile" />
+        <appender-ref ref="error" />
+    </root>
+</configuration>

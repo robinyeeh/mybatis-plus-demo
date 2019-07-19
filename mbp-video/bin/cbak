@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# constants
+base_dir="/opt/oes/backup"
+
+
+safemkdir(){
+  if [[ ! -d $1 ]] ; then
+    mkdir -p $1
+  fi
+}
+
+cmd=$1
+src_file=$2
+dest=$3
+
+if [[ "${cmd}" != "cp" && "${cmd}" != "mv" || ! -n "${src_file}" ]]; then
+  echo "Usage: cbak cp|mv file [|dest folder]"
+  exit 0
+fi
+
+
+if [[ ! -n "${src_file}" ]]; then
+  echo "Usage: cbak file [|dest folder]"
+  exit 0
+fi
+
+if [[ ! -d ${src_file} && ! -f ${src_file} ]]; then
+    echo "Error: Source file [${src_file}] does not exist."
+    exit 1
+fi
+
+src_file_full=$(readlink -f ${src_file})
+
+dest_folder=""
+work_dir=${src_file_full%/*}
+date_format=$(date '+%Y%m%d')
+if [[ ! -n "${dest}" ]]; then
+    dest_folder=${base_dir}/${date_format}${work_dir}
+else
+    dest_folder=${dest}
+fi
+
+if [[ ! -d ${dest_folder} ]]; then
+    safemkdir ${dest_folder}
+fi
+
+tmp_src_file=${src_file_full##*/}
+dest_file=${dest_folder}/${tmp_src_file}
+time_format=$(date '+%H%M%S')
+
+if [[ -d ${dest_file} || -f ${dest_file} ]]; then
+    dest_file=${dest_file}.${time_format}
+fi
+
+if [[ "${cmd}" == "cp" ]]; then
+    cp -rf ${src_file} ${dest_file}
+elif [[ "${cmd}" == "mv" ]]; then
+    mv -f ${src_file} ${dest_file}
+else
+    echo "Error: Invalid command ${cmd}"
+fi
+
+echo "${cmd} file/folder ${src_file} to ${dest_folder}"

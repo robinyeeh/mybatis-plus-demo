@@ -1,0 +1,39 @@
+<assembly
+        xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+    <id>${project.version}</id>
+    <formats>
+        <format>dir</format>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <baseDirectory>${build.directory}</baseDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>conf/</directory>
+            <outputDirectory>${build.application.name}/conf</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>db/</directory>
+            <outputDirectory>${build.application.name}/db</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${build.directory}</directory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+            <excludes>
+                <exclude>*sources.jar</exclude>
+            </excludes>
+            <outputDirectory>${build.application.name}/lib</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>bin/</directory>
+            <outputDirectory>${build.application.name}/bin</outputDirectory>
+            <fileMode>754</fileMode>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+    </fileSets>
+</assembly>

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OES_CONTENT_HOME=/opt/oes/oes-content
+OES_CONTENT_HOME=/opt/app/mbp
 APP_NAME=video
 APP_HOME=${OES_CONTENT_HOME}/${APP_NAME}
 APP_VERSION=1.0.0

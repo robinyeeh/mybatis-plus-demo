@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # constants
-base_dir="/opt/oes/backup"
+base_dir="/opt/mbp/backup"
 
 
 safemkdir(){

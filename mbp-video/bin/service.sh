@@ -7,7 +7,7 @@ APP_VERSION=1.0.0
 
 LOG_HOME=${MBP_CONTENT_HOME}/logs
 LOG_PATH=${LOG_HOME}/${APP_NAME}
-ENV_LIST=("default" "dev" "test" "preview" "prod")
+ENV_LIST=("default" "dev" "test" "prod")
 
 REMOTE_PORT=6001
 

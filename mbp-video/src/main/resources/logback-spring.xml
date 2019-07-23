@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false" scan="false">
 <!--    <springProperty scop="context" name="app_name" source="spring.application.name" defaultValue="manage"/>-->
-    <springProperty scop="context" name="log_level" source="oes.log.level" defaultValue="INFO"/>
-    <springProperty scop="context" name="log_open_console" source="oes.log.open_console" defaultValue="false"/>
+    <springProperty scop="context" name="log_level" source="mbp.log.level" defaultValue="INFO"/>
+    <springProperty scop="context" name="log_open_console" source="mbp.log.open_console" defaultValue="false"/>
 
     <property name="app_name" value="${app.name:-video}"/>
-    <property name="log_path" value="${log.home:-/opt/oes/oes-content}"/>
+    <property name="log_path" value="${log.home:-/opt/logs/mbp}"/>
 
     <property name="CONSOLE_LOG_PATTERN"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS}|%level|${PID:-}|%thread|${app_name:-}|%X{X-B3-TraceId:-}|%X{X-B3-SpanId:-}|%X{X-Span-Export:-}|%class.%method-%line|%msg%n"/>
@@ -49,8 +49,8 @@
     <logger name="com.netflix"/>
     <logger name="io.github.openfeign"/>
     <logger name="com.squareup.okhttp3"/>
-    <logger name="com.wondertek"/>
-    <logger name="com.wondertek.oes"/>
+    <logger name="com.robinye"/>
+    <logger name="com.robinye.mbp"/>
 
     <!-- Level: FATAL 0  ERROR 3  WARN 4  INFO 6  DEBUG 7 -->
     <root level="${log_level}">

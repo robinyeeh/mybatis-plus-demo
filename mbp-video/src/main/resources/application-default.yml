@@ -33,7 +33,7 @@ spring:
         
 mybatis-plus:
   mapper-locations: classpath:mapper/*Mapper.xml
-  type-aliases-package: com.wondertek.oes.content.entity
+  type-aliases-package: com.robinye.mbp.entity
   configuration:
       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
@@ -58,7 +58,7 @@ feign:
                 readTimeout: 60000
                 loggerLevel: basic
 
-oes:
+mbp:
     log:
         level: INFO
         open_console: true

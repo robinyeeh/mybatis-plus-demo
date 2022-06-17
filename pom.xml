@@ -34,7 +34,7 @@
         <commons-lang3.version>3.9</commons-lang3.version>
         <commons-io.version>2.6</commons-io.version>
 
-        <fastjson.version>1.2.56</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <mybatis-plus.version>3.1.2</mybatis-plus.version>
         <mysql.version>8.0.15</mysql.version>
     </properties>
